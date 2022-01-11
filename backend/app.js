@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Pg = require("./models/Pg");
 const User = require("./models/User");
-
+const port = process.env.PORT;
 const Schema = mongoose.Schema;
 const app = express();
 const bodyParser = require("body-parser");
@@ -106,6 +106,10 @@ app.get('/user/:id', async (request, response) => {
         response.status(404).json({ message: error.message })
     }
   });
+
+  app.listen(port, () => {
+      console.log(`listening to port np. at ${port}`);
+  })
 
 
 
